@@ -1,0 +1,91 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\rkota1\Downloads\UmemploymentGDPP.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Apr 2022, 16:32:24
+
+{com}. import excel "C:\Users\rkota1\Downloads\FinalData_Eco2.xlsx", sheet("Sheet1") firstrow clear
+{res}{text}(12 vars, 1,173 obs)
+
+{com}. reg Unemployment GDP GDP1 EnergyConsumption Year Year1 CPI YearDummy DummyRedBlue
+{txt}{p 0 6 2}note: {bf:Year1} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     1,173
+{txt}{hline 13}{c +}{hline 34}   F(7, 1165)      = {res}    28.65
+{txt}       Model {c |} {res} 613.746162         7  87.6780231   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 3565.26502     1,165  3.06031332   {txt}R-squared       ={res}    0.1469
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1417
+{txt}       Total {c |} {res} 4179.01118     1,172   3.5657092   {txt}Root MSE        =   {res} 1.7494
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}Unemployment{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}GDP {c |}{col 14}{res}{space 2} 9.09e-06{col 26}{space 2} 5.26e-06{col 37}{space 1}    1.73{col 46}{space 3}0.084{col 54}{space 4}-1.23e-06{col 67}{space 3} .0000194
+{txt}{space 8}GDP1 {c |}{col 14}{res}{space 2}-.0000279{col 26}{space 2} 5.15e-06{col 37}{space 1}   -5.41{col 46}{space 3}0.000{col 54}{space 4} -.000038{col 67}{space 3}-.0000178
+{txt}EnergyCons~n {c |}{col 14}{res}{space 2}-.0008959{col 26}{space 2} .0133869{col 37}{space 1}   -0.07{col 46}{space 3}0.947{col 54}{space 4} -.027161{col 67}{space 3} .0253693
+{txt}{space 8}Year {c |}{col 14}{res}{space 2}-.7682159{col 26}{space 2} .0837623{col 37}{space 1}   -9.17{col 46}{space 3}0.000{col 54}{space 4}-.9325577{col 67}{space 3}-.6038742
+{txt}{space 7}Year1 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 9}CPI {c |}{col 14}{res}{space 2} .1907294{col 26}{space 2} .0193285{col 37}{space 1}    9.87{col 46}{space 3}0.000{col 54}{space 4} .1528069{col 67}{space 3} .2286519
+{txt}{space 3}YearDummy {c |}{col 14}{res}{space 2} -.122469{col 26}{space 2} .1458955{col 37}{space 1}   -0.84{col 46}{space 3}0.401{col 54}{space 4}-.4087163{col 67}{space 3} .1637783
+{txt}DummyRedBlue {c |}{col 14}{res}{space 2} .0828574{col 26}{space 2} .1036547{col 37}{space 1}    0.80{col 46}{space 3}0.424{col 54}{space 4}-.1205135{col 67}{space 3} .2862282
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1508.443{col 26}{space 2} 164.1571{col 37}{space 1}    9.19{col 46}{space 3}0.000{col 54}{space 4} 1186.367{col 67}{space 3}  1830.52
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg Unemployment GDP GDP1 EnergyConsumption Year Year1 CPI YearDummy DummyRedBlue if Year<=2010
+{txt}{p 0 6 2}note: {bf:Year1} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       714
+{txt}{hline 13}{c +}{hline 34}   F(7, 706)       = {res}    45.52
+{txt}       Model {c |} {res} 758.142542         7  108.306077   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1679.83204       706  2.37936549   {txt}R-squared       ={res}    0.3110
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3041
+{txt}       Total {c |} {res} 2437.97458       713  3.41931919   {txt}Root MSE        =   {res} 1.5425
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}Unemployment{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}GDP {c |}{col 14}{res}{space 2} 4.63e-06{col 26}{space 2} 5.54e-06{col 37}{space 1}    0.84{col 46}{space 3}0.403{col 54}{space 4}-6.24e-06{col 67}{space 3} .0000155
+{txt}{space 8}GDP1 {c |}{col 14}{res}{space 2}-.0000263{col 26}{space 2} 5.33e-06{col 37}{space 1}   -4.93{col 46}{space 3}0.000{col 54}{space 4}-.0000367{col 67}{space 3}-.0000158
+{txt}EnergyCons~n {c |}{col 14}{res}{space 2}-.0040276{col 26}{space 2} .0148222{col 37}{space 1}   -0.27{col 46}{space 3}0.786{col 54}{space 4}-.0331285{col 67}{space 3} .0250733
+{txt}{space 8}Year {c |}{col 14}{res}{space 2} .6102218{col 26}{space 2} .1157719{col 37}{space 1}    5.27{col 46}{space 3}0.000{col 54}{space 4} .3829233{col 67}{space 3} .8375202
+{txt}{space 7}Year1 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 9}CPI {c |}{col 14}{res}{space 2}-.0857894{col 26}{space 2} .0250991{col 37}{space 1}   -3.42{col 46}{space 3}0.001{col 54}{space 4}-.1350671{col 67}{space 3}-.0365116
+{txt}{space 3}YearDummy {c |}{col 14}{res}{space 2}-.1464194{col 26}{space 2} .1379895{col 37}{space 1}   -1.06{col 46}{space 3}0.289{col 54}{space 4}-.4173384{col 67}{space 3} .1244995
+{txt}DummyRedBlue {c |}{col 14}{res}{space 2}-.1853367{col 26}{space 2} .1202148{col 37}{space 1}   -1.54{col 46}{space 3}0.124{col 54}{space 4}-.4213579{col 67}{space 3} .0506846
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1200.661{col 26}{space 2} 227.2205{col 37}{space 1}   -5.28{col 46}{space 3}0.000{col 54}{space 4} -1646.77{col 67}{space 3}-754.5521
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg Unemployment GDP GDP1 EnergyConsumption Year Year1 CPI YearDummy DummyRedBlue if Year>2010
+{txt}{p 0 6 2}note: {bf:Year1} omitted because of collinearity.{p_end}
+{p 0 6 2}note: {bf:YearDummy} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       459
+{txt}{hline 13}{c +}{hline 34}   F(6, 452)       = {res}    39.65
+{txt}       Model {c |} {res} 583.409162         6  97.2348603   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1108.51357       452  2.45246366   {txt}R-squared       ={res}    0.3448
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3361
+{txt}       Total {c |} {res} 1691.92274       458  3.69415445   {txt}Root MSE        =   {res}  1.566
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}Unemployment{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}GDP {c |}{col 14}{res}{space 2}-5.37e-06{col 26}{space 2} 9.32e-06{col 37}{space 1}   -0.58{col 46}{space 3}0.565{col 54}{space 4}-.0000237{col 67}{space 3}  .000013
+{txt}{space 8}GDP1 {c |}{col 14}{res}{space 2} 7.39e-06{col 26}{space 2} 9.66e-06{col 37}{space 1}    0.76{col 46}{space 3}0.445{col 54}{space 4}-.0000116{col 67}{space 3} .0000264
+{txt}EnergyCons~n {c |}{col 14}{res}{space 2}-.0125047{col 26}{space 2} .0199503{col 37}{space 1}   -0.63{col 46}{space 3}0.531{col 54}{space 4}-.0517116{col 67}{space 3} .0267021
+{txt}{space 8}Year {c |}{col 14}{res}{space 2}-.8058446{col 26}{space 2} .1658123{col 37}{space 1}   -4.86{col 46}{space 3}0.000{col 54}{space 4}-1.131703{col 67}{space 3}-.4799859
+{txt}{space 7}Year1 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 9}CPI {c |}{col 14}{res}{space 2} .1099948{col 26}{space 2} .0484559{col 37}{space 1}    2.27{col 46}{space 3}0.024{col 54}{space 4} .0147679{col 67}{space 3} .2052216
+{txt}{space 3}YearDummy {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+DummyRedBlue {c |}{col 14}{res}{space 2}-.1333092{col 26}{space 2}  .148645{col 37}{space 1}   -0.90{col 46}{space 3}0.370{col 54}{space 4}-.4254303{col 67}{space 3} .1588119
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1603.321{col 26}{space 2} 322.7189{col 37}{space 1}    4.97{col 46}{space 3}0.000{col 54}{space 4} 969.1057{col 67}{space 3} 2237.537
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\rkota1\Downloads\UmemploymentGDPP.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}22 Apr 2022, 16:37:31
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
